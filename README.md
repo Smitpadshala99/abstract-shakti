@@ -1,6 +1,30 @@
+<div align="center">
+
 # ABSTRACT SHAKTI · अमूर्त शक्ति
 > **Where Ancient Indian Wisdom Meets Artificial Intelligence**  
 > *A Digital Cultural Retrospective & Interactive 3D WebGL Exhibition*
+
+[![Live Exhibition](https://img.shields.io/badge/🌐%20Live%20Exhibition-abstract--shakti.vercel.app-f59e0b?style=for-the-badge&logo=vercel&logoColor=white)](https://abstract-shakti.vercel.app/)
+[![React 19](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![Three.js](https://img.shields.io/badge/Three.js-3D%20WebGL-black?style=for-the-badge&logo=threedotjs&logoColor=white)](https://threejs.org/)
+[![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+
+<br />
+
+### 🌐 Live Production URL
+**[https://abstract-shakti.vercel.app/](https://abstract-shakti.vercel.app/)**
+
+<br />
+
+<!-- MASTER RANGOLI ARTWORK SHOWCASE -->
+<a href="https://abstract-shakti.vercel.app/" target="_blank">
+  <img src="./public/crops/complete-rangoli.png" alt="Abstract Shakti - Master Rangoli Artwork uniting Maa Durga and Digital Shakti" width="680" style="border-radius: 18px; box-shadow: 0 25px 70px rgba(0,0,0,0.85); border: 1px solid rgba(245, 158, 11, 0.4);" />
+</a>
+
+<p><em>The Masterpiece: Hand-poured dry quartz pigments, ceremonial vermillion, and marigold garlands divided across a bilateral meridian — Maa Durga (Left) ⟷ Digital Shakti (Right).</em></p>
+
+</div>
 
 ---
 
@@ -8,7 +32,7 @@
 
 **Abstract Shakti** is a high-end interactive museum and cultural web exhibition (designed in the spirit of *Awwwards Site of the Year*, *Google Arts & Culture*, and *Active Theory*) celebrating the synthesis of sacred Indian Rangoli sand art, Vedic metaphysics, and modern neural computation.
 
-The exhibition centers on a masterwork ceremonial Rangoli created from hand-poured dry mineral pigments, divided across a precise central meridian:
+The exhibition centers on a masterwork ceremonial Rangoli created from hand-poured dry mineral pigments, divided across a precise central meridian ($x = 627$):
 - **Left Hemisphere (Vedic / Traditional Realm)**: Maa Durga — 4 arms, golden Mukut, Tilak, and sacred emblems (Sacred Trishul, Shankha, Sudarshana Chakra, and Pink Lotus).
 - **Right Hemisphere (Cybernetic / Digital Realm)**: Digital Shakti — 4 robotic arms, cybernetic circuit crown, fiber-optic locks, and computing counterparts (AI Neural Processor, Digital Interactive Tablet, Cloud Database, and Holographic Data Cube).
 
@@ -79,6 +103,7 @@ Structured hand-by-hand across the 4 arm tiers of the dual deity:
 - **3D Graphics & Shaders**: [Three.js](https://threejs.org/) + Custom GLSL Vertex & Fragment Shaders
 - **Icons**: [Lucide React](https://lucide.dev/)
 - **Audio Engine**: Custom HTML5 / YouTube IFrame Soundscape Controller
+- **Hosting & CDN**: [Vercel](https://vercel.com/) Global Edge Network
 
 ---
 
@@ -112,14 +137,11 @@ npm run build
 
 ---
 
-## ✦ Deployment (Vercel)
+## ✦ Live Deployment
 
-This project includes a pre-configured [`vercel.json`](./vercel.json) optimized for Vite single-page applications with immutable asset caching and clean SPA routing.
-
-1. Import the repository in [Vercel](https://vercel.com/new).
-2. Set **Project Name** to `abstract-shakti` (or your chosen URL).
-3. Framework preset: **Vite** (auto-detected).
-4. Click **Deploy**.
+The exhibition is deployed and globally accessible on Vercel:
+- **Production URL**: [https://abstract-shakti.vercel.app/](https://abstract-shakti.vercel.app/)
+- **Configuration**: Managed via [`vercel.json`](./vercel.json) with immutable asset caching and clean client-side SPA routing.
 
 ---
 
