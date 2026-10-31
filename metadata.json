@@ -1,0 +1,6 @@
+{
+  "name": "Abstract Shakti — 3D Digital Art Exhibition",
+  "description": "An immersive 3D digital art exhibition uniting ancient Indian wisdom and artificial intelligence through original rangoli artwork.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
