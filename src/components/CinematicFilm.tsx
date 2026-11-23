@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { publicAsset } from '../utils/publicAsset';
-import { Play, Pause, Volume2, VolumeX, Maximize, Upload, Film, Sparkles, RotateCcw } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, Maximize, Film, RotateCcw } from 'lucide-react';
 
 const SCENE_CROPS = [
   publicAsset('/crops/complete-rangoli.png'),
@@ -24,26 +24,14 @@ export const CinematicFilm: React.FC = () => {
   const [activeFilmType, setActiveFilmType] = useState<'60s' | '10s'>('60s');
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [videoDuration, setVideoDuration] = useState<number | null>(null);
   const [isMuted, setIsMuted] = useState(false);
   const [isScrubbing, setIsScrubbing] = useState(false);
   const [hoverTime, setHoverTime] = useState<number | null>(null);
   const [hoverX, setHoverX] = useState<number>(0);
 
-  const [uploadedVideos, setUploadedVideos] = useState<{ '60s': string | null; '10s': string | null }>({
-    '60s': null,
-    '10s': null,
-  });
-  const [uploadFileName, setUploadFileName] = useState<{ '60s': string | null; '10s': string | null }>({
-    '60s': null,
-    '10s': null,
-  });
-
-  const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const playerContainerRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const imagesRef = useRef<HTMLImageElement[]>([]);
   const currentTimeRef = useRef<number>(0);
@@ -52,9 +40,7 @@ export const CinematicFilm: React.FC = () => {
   // Sync ref with state
   currentTimeRef.current = currentTime;
 
-  const targetDuration = activeFilmType === '60s' ? 60 : 10;
-  const currentVideoSrc = uploadedVideos[activeFilmType];
-  const duration = currentVideoSrc && videoDuration && videoDuration > 0 ? videoDuration : targetDuration;
+  const duration = activeFilmType === '60s' ? 60 : 10;
 
   // Preload crop images once on mount
   useEffect(() => {
@@ -69,7 +55,6 @@ export const CinematicFilm: React.FC = () => {
 
   // Procedural Cinematic Canvas Tour Loop (Strict Wall-Clock Sync via performance.now())
   useEffect(() => {
-    if (currentVideoSrc) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -150,22 +135,12 @@ export const CinematicFilm: React.FC = () => {
 
     animFrame = requestAnimationFrame(render);
     return () => cancelAnimationFrame(animFrame);
-  }, [isPlaying, isScrubbing, duration, currentVideoSrc]);
+  }, [isPlaying, isScrubbing, duration]);
 
   // Handle Play/Pause
   const togglePlay = () => {
-    if (currentVideoSrc && videoRef.current) {
-      if (videoRef.current.paused) {
-        videoRef.current.play();
-        setIsPlaying(true);
-      } else {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      }
-    } else {
-      lastFrameTimeRef.current = performance.now();
-      setIsPlaying(!isPlaying);
-    }
+    lastFrameTimeRef.current = performance.now();
+    setIsPlaying(!isPlaying);
   };
 
   // Handle Fullscreen
@@ -175,25 +150,6 @@ export const CinematicFilm: React.FC = () => {
       playerContainerRef.current.requestFullscreen().catch(console.error);
     } else {
       document.exitFullscreen().catch(console.error);
-    }
-  };
-
-  // Handle Video Upload
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setUploadedVideos(prev => ({
-        ...prev,
-        [activeFilmType]: url,
-      }));
-      setUploadFileName(prev => ({
-        ...prev,
-        [activeFilmType]: file.name,
-      }));
-      currentTimeRef.current = 0;
-      setCurrentTime(0);
-      setIsPlaying(true);
     }
   };
 
@@ -211,13 +167,11 @@ export const CinematicFilm: React.FC = () => {
     const newTime = calculateSeekTime(e.clientX);
     currentTimeRef.current = newTime;
     setCurrentTime(newTime);
-    if (videoRef.current) videoRef.current.currentTime = newTime;
 
     const handleMouseMove = (moveEvent: MouseEvent) => {
       const seekTime = calculateSeekTime(moveEvent.clientX);
       currentTimeRef.current = seekTime;
       setCurrentTime(seekTime);
-      if (videoRef.current) videoRef.current.currentTime = seekTime;
     };
 
     const handleMouseUp = () => {
@@ -305,36 +259,13 @@ export const CinematicFilm: React.FC = () => {
           ref={playerContainerRef}
           className="relative w-full aspect-video max-w-5xl mx-auto rounded-2xl overflow-hidden bg-black border border-stone-800 shadow-[0_25px_70px_rgba(0,0,0,0.9)] group"
         >
-          {/* Actual Video Element (if uploaded) */}
-          {currentVideoSrc ? (
-            <video
-              ref={videoRef}
-              src={currentVideoSrc}
-              className="w-full h-full object-contain"
-              onLoadedMetadata={() => {
-                if (videoRef.current && videoRef.current.duration) {
-                  setVideoDuration(videoRef.current.duration);
-                }
-              }}
-              onTimeUpdate={() => {
-                if (videoRef.current && !isScrubbing) {
-                  currentTimeRef.current = videoRef.current.currentTime;
-                  setCurrentTime(videoRef.current.currentTime);
-                }
-              }}
-              onEnded={() => setIsPlaying(false)}
-              onClick={togglePlay}
-            />
-          ) : (
-            /* Procedural Cinematic Artwork Tour Canvas */
-            <canvas
-              ref={canvasRef}
-              width={1280}
-              height={720}
-              className="w-full h-full object-cover cursor-pointer"
-              onClick={togglePlay}
-            />
-          )}
+          <canvas
+            ref={canvasRef}
+            width={1280}
+            height={720}
+            className="w-full h-full object-cover cursor-pointer"
+            onClick={togglePlay}
+          />
 
           {/* Big Center Play Button Overlay (when paused) */}
           {!isPlaying && (
@@ -346,7 +277,7 @@ export const CinematicFilm: React.FC = () => {
                 <Play className="w-8 h-8 fill-current" />
               </div>
               <p className="mt-4 text-xs font-mono tracking-widest uppercase text-stone-200">
-                {currentVideoSrc ? 'Play Uploaded Film' : 'Play Cinematic Artwork Tour'}
+                Play Cinematic Artwork Tour
               </p>
             </div>
           )}
@@ -404,7 +335,6 @@ export const CinematicFilm: React.FC = () => {
                   onClick={() => {
                     currentTimeRef.current = 0;
                     setCurrentTime(0);
-                    if (videoRef.current) videoRef.current.currentTime = 0;
                     lastFrameTimeRef.current = performance.now();
                   }}
                   aria-label="Restart film"
@@ -423,9 +353,7 @@ export const CinematicFilm: React.FC = () => {
               <div className="hidden sm:flex items-center gap-2 text-[11px] text-stone-400">
                 <Film className="w-3.5 h-3.5 text-amber-400" />
                 <span>
-                  {uploadFileName[activeFilmType]
-                    ? `File: ${uploadFileName[activeFilmType]}`
-                    : activeFilmType === '60s'
+                  {activeFilmType === '60s'
                     ? 'Exhibition Walkthrough (60s)'
                     : 'Curatorial Teaser (10s)'}
                 </span>
@@ -435,9 +363,7 @@ export const CinematicFilm: React.FC = () => {
                 {/* Volume / Mute */}
                 <button
                   onClick={() => {
-                    const nextMuted = !isMuted;
-                    setIsMuted(nextMuted);
-                    if (videoRef.current) videoRef.current.muted = nextMuted;
+                    setIsMuted(!isMuted);
                   }}
                   aria-label={isMuted ? 'Unmute' : 'Mute'}
                   className="p-1.5 hover:text-white transition-colors"
@@ -455,36 +381,6 @@ export const CinematicFilm: React.FC = () => {
                 </button>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Clear Video Asset Upload Area */}
-        <div className="mt-8 max-w-2xl mx-auto p-5 rounded-xl bg-stone-900/60 border border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-left">
-            <h4 className="text-sm font-medium text-white flex items-center gap-2">
-              <Upload className="w-4 h-4 text-amber-400" />
-              <span>Upload Your Real Video File</span>
-            </h4>
-            <p className="text-xs text-stone-400 mt-1">
-              Have your own generated AI video file? Load your 60-second full film or 10-second teaser directly into this player.
-            </p>
-          </div>
-
-          <div className="shrink-0">
-            <input
-              type="file"
-              ref={fileInputRef}
-              accept="video/mp4,video/webm,video/quicktime"
-              className="hidden"
-              onChange={handleFileChange}
-            />
-            <button
-              onClick={() => fileInputRef.current?.click()}
-              className="px-4 py-2 bg-stone-800 hover:bg-stone-700 text-amber-300 border border-amber-500/30 rounded text-xs font-mono uppercase tracking-wider transition-colors flex items-center gap-2"
-            >
-              <Upload className="w-3.5 h-3.5" />
-              <span>Select {activeFilmType} Video</span>
-            </button>
           </div>
         </div>
       </div>

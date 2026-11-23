@@ -113,17 +113,16 @@ export const CinematicHero: React.FC<CinematicHeroProps> = ({ onExploreClick }) 
             )}
           </div>
 
-          {/* Axis Metadata Labels */}
-          <div className="absolute -bottom-8 left-2 text-[11px] font-mono tracking-widest uppercase text-amber-400/80">
-            ← MAA DURGA · 4 ARMS · VEDIC
-          </div>
-          <div className="absolute -bottom-8 right-2 text-[11px] font-mono tracking-widest uppercase text-cyan-400/80 text-right">
-            DIGITAL SHAKTI · 4 ARMS · AI →
-          </div>
+        </div>
+
+        {/* Axis labels sit in normal flow so the two captions never share the same line. */}
+        <div className="mt-4 flex w-full max-w-3xl flex-col items-center gap-1.5 px-2 text-[11px] font-mono uppercase tracking-[0.16em] sm:flex-row sm:justify-between sm:gap-8">
+          <span className="text-amber-400/80">← Maa Durga · 4 arms · Vedic</span>
+          <span className="text-cyan-400/80">Digital Shakti · 4 arms · AI →</span>
         </div>
 
         {/* CTA Button */}
-        <div className="mt-14 flex flex-col items-center gap-3">
+        <div className="mt-8 flex flex-col items-center gap-3">
           <button
             onClick={onExploreClick}
             className="group relative inline-flex items-center gap-3 px-8 py-3.5 bg-gradient-to-r from-amber-600/30 via-stone-900 to-cyan-600/30 border border-stone-700/80 hover:border-amber-400/60 rounded text-stone-100 font-serif text-sm tracking-widest uppercase transition-all duration-300 hover:shadow-[0_0_25px_rgba(245,158,11,0.25)]"
