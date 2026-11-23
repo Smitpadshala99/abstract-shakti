@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { publicAsset } from '../utils/publicAsset';
 import { Flower, Cpu, Compass, Layers } from 'lucide-react';
 
 export const WhatIsRangoli: React.FC = () => {
@@ -49,7 +50,7 @@ export const WhatIsRangoli: React.FC = () => {
             <div className="relative w-full aspect-square max-w-md rounded-2xl overflow-hidden border border-stone-800 shadow-[0_15px_50px_rgba(0,0,0,0.7)] group">
               {/* Supporting Original Artwork Crop (Marigold & Dual Pigments) */}
               <img
-                src="/crops/central-division.png"
+                src={publicAsset('/crops/central-division.png')}
                 alt="Transition from traditional rangoli powder to digital circuit logic"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 referrerPolicy="no-referrer"

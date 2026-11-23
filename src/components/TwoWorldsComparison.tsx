@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { publicAsset } from '../utils/publicAsset';
 import { Shield, Cpu, Sparkles, Binary, SlidersHorizontal } from 'lucide-react';
 
 export const TwoWorldsComparison: React.FC = () => {
@@ -31,7 +32,7 @@ export const TwoWorldsComparison: React.FC = () => {
             {/* Background Layer: Right Side (Digital Shakti Full Side) */}
             <div className="absolute inset-0 w-full h-full">
               <img
-                src="/crops/tech-side.png"
+                src={publicAsset('/crops/tech-side.png')}
                 alt="Digital Shakti AI Side"
                 className="w-full h-full object-cover object-left"
                 referrerPolicy="no-referrer"
@@ -51,7 +52,7 @@ export const TwoWorldsComparison: React.FC = () => {
                 style={{ width: '100%', minWidth: '100%' }}
               >
                 <img
-                  src="/crops/traditional-side.png"
+                  src={publicAsset('/crops/traditional-side.png')}
                   alt="Traditional Maa Durga Side"
                   className="w-full h-full object-cover object-right"
                   referrerPolicy="no-referrer"
@@ -113,7 +114,7 @@ export const TwoWorldsComparison: React.FC = () => {
               {/* Exact Face Crop Display */}
               <div className="w-full aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-black border border-amber-900/50">
                 <img
-                  src="/crops/traditional-side.png"
+                  src={publicAsset('/crops/traditional-side.png')}
                   alt="Traditional Maa Durga Full Side"
                   className="w-full h-full object-cover object-right"
                   referrerPolicy="no-referrer"
@@ -158,7 +159,7 @@ export const TwoWorldsComparison: React.FC = () => {
               {/* Exact Face Crop Display */}
               <div className="w-full aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-black border border-cyan-900/50">
                 <img
-                  src="/crops/tech-side.png"
+                  src={publicAsset('/crops/tech-side.png')}
                   alt="Digital Shakti Full Side"
                   className="w-full h-full object-cover object-left"
                   referrerPolicy="no-referrer"

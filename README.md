@@ -4,7 +4,7 @@
 > **Where Ancient Indian Wisdom Meets Artificial Intelligence**  
 > *A Digital Cultural Retrospective & Interactive 3D WebGL Exhibition*
 
-[![Live Exhibition](https://img.shields.io/badge/🌐%20Live%20Exhibition-abstract--shakti.vercel.app-f59e0b?style=for-the-badge&logo=vercel&logoColor=white)](https://abstract-shakti.vercel.app/)
+[![Live Exhibition](https://img.shields.io/badge/🌐%20Live%20Exhibition-GitHub%20Pages-f59e0b?style=for-the-badge&logo=github&logoColor=white)](https://smitpadshala99.github.io/abstract-shakti/)
 [![React 19](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Three.js](https://img.shields.io/badge/Three.js-3D%20WebGL-black?style=for-the-badge&logo=threedotjs&logoColor=white)](https://threejs.org/)
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
@@ -13,12 +13,12 @@
 <br />
 
 ### 🌐 Live Production URL
-**[https://abstract-shakti.vercel.app/](https://abstract-shakti.vercel.app/)**
+**[https://smitpadshala99.github.io/abstract-shakti/](https://smitpadshala99.github.io/abstract-shakti/)**
 
 <br />
 
 <!-- MASTER RANGOLI ARTWORK SHOWCASE -->
-<a href="https://abstract-shakti.vercel.app/" target="_blank">
+<a href="https://smitpadshala99.github.io/abstract-shakti/" target="_blank">
   <img src="./public/crops/complete-rangoli.png" alt="Abstract Shakti - Master Rangoli Artwork uniting Maa Durga and Digital Shakti" width="680" style="border-radius: 18px; box-shadow: 0 25px 70px rgba(0,0,0,0.85); border: 1px solid rgba(245, 158, 11, 0.4);" />
 </a>
 
@@ -103,7 +103,7 @@ Structured hand-by-hand across the 4 arm tiers of the dual deity:
 - **3D Graphics & Shaders**: [Three.js](https://threejs.org/) + Custom GLSL Vertex & Fragment Shaders
 - **Icons**: [Lucide React](https://lucide.dev/)
 - **Audio Engine**: Custom HTML5 / YouTube IFrame Soundscape Controller
-- **Hosting & CDN**: [Vercel](https://vercel.com/) Global Edge Network
+- **Hosting**: [GitHub Pages](https://pages.github.com/)
 
 ---
 
@@ -139,9 +139,9 @@ npm run build
 
 ## ✦ Live Deployment
 
-The exhibition is deployed and globally accessible on Vercel:
-- **Production URL**: [https://abstract-shakti.vercel.app/](https://abstract-shakti.vercel.app/)
-- **Configuration**: Managed via [`vercel.json`](./vercel.json) with immutable asset caching and clean client-side SPA routing.
+The exhibition is deployed on GitHub Pages from this public repository:
+- **Production URL**: [https://smitpadshala99.github.io/abstract-shakti/](https://smitpadshala99.github.io/abstract-shakti/)
+- **Configuration**: GitHub Actions workflow [`.github/workflows/pages.yml`](./.github/workflows/pages.yml) builds with `npm run build` and publishes `dist`.
 
 ---
 

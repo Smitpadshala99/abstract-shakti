@@ -1,22 +1,23 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { publicAsset } from '../utils/publicAsset';
 import { Play, Pause, Volume2, VolumeX, Maximize, Upload, Film, Sparkles, RotateCcw } from 'lucide-react';
 
 const SCENE_CROPS = [
-  '/crops/complete-rangoli.png',
-  '/crops/traditional-side.png',
-  '/crops/golden-mukut.png',
-  '/crops/durga-face.png',
-  '/crops/trishul.png',
-  '/crops/shankha.png',
-  '/crops/sudarshana-chakra.png',
-  '/crops/lotus.png',
-  '/crops/tech-side.png',
-  '/crops/tech-crown.png',
-  '/crops/ai-goddess-face.png',
-  '/crops/ai-processor.png',
-  '/crops/digital-tablet.png',
-  '/crops/cloud-database.png',
-  '/crops/holographic-cube.png',
+  publicAsset('/crops/complete-rangoli.png'),
+  publicAsset('/crops/traditional-side.png'),
+  publicAsset('/crops/golden-mukut.png'),
+  publicAsset('/crops/durga-face.png'),
+  publicAsset('/crops/trishul.png'),
+  publicAsset('/crops/shankha.png'),
+  publicAsset('/crops/sudarshana-chakra.png'),
+  publicAsset('/crops/lotus.png'),
+  publicAsset('/crops/tech-side.png'),
+  publicAsset('/crops/tech-crown.png'),
+  publicAsset('/crops/ai-goddess-face.png'),
+  publicAsset('/crops/ai-processor.png'),
+  publicAsset('/crops/digital-tablet.png'),
+  publicAsset('/crops/cloud-database.png'),
+  publicAsset('/crops/holographic-cube.png'),
 ];
 
 export const CinematicFilm: React.FC = () => {

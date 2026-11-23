@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { publicAsset } from '../utils/publicAsset';
 import { ThreeConvergenceCanvas } from './ThreeConvergenceCanvas';
 import { Sparkles, Cpu, GitFork, ArrowLeftRight } from 'lucide-react';
 
@@ -51,7 +52,7 @@ export const CentralConnection: React.FC = () => {
           <div className="lg:col-span-4 flex flex-col items-center">
             <div className="relative w-44 sm:w-56 h-[440px] sm:h-[500px] rounded-2xl overflow-hidden border-2 border-stone-700/80 shadow-[0_0_50px_rgba(255,255,255,0.15)] bg-stone-950 group">
               <img
-                src="/crops/central-division.png"
+                src={publicAsset('/crops/central-division.png')}
                 alt="Actual Cropped Central Dividing Axis from Rangoli"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 referrerPolicy="no-referrer"

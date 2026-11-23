@@ -5,6 +5,8 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    // Project Pages serves the site at /abstract-shakti/, not the domain root.
+    base: process.env.GITHUB_PAGES === 'true' ? '/abstract-shakti/' : '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
