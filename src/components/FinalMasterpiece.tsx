@@ -75,28 +75,25 @@ export const FinalMasterpiece: React.FC = () => {
               </>
             )}
           </div>
+        </div>
 
-          {/* Museum Accession Placard */}
-          <div className="mt-8 p-4 rounded-xl bg-stone-950/80 border border-stone-800 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-stone-400">
-            <div className="text-left">
-              <span className="text-amber-400 font-semibold block">ACCESSION: AS-2026-OM-AI</span>
-              <span>ORIGINAL RANGOLI ARTWORK · MINERAL PIGMENTS ON STONE</span>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <button
-                onClick={handleShare}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-stone-900 hover:bg-stone-800 text-stone-200 border border-stone-700 transition-colors"
-              >
-                {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Share2 className="w-3.5 h-3.5" />}
-                <span>{copied ? 'Copied Link' : 'Share Exhibition'}</span>
-              </button>
-            </div>
+        {/* Placard sits below the square so the closing quote cannot run through it. */}
+        <div className="mt-8 w-full max-w-[340px] sm:max-w-[500px] md:max-w-[620px] p-4 rounded-xl bg-stone-950 border border-stone-800 flex flex-col items-center gap-4 text-xs font-mono text-stone-400 sm:flex-row sm:items-center sm:justify-between">
+          <div className="text-center sm:text-left">
+            <span className="text-amber-400 font-semibold block">ACCESSION: AS-2026-OM-AI</span>
+            <span className="block mt-1 leading-relaxed">ORIGINAL RANGOLI ARTWORK · MINERAL PIGMENTS ON STONE</span>
           </div>
+          <button
+            onClick={handleShare}
+            className="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded bg-stone-900 hover:bg-stone-800 text-stone-200 border border-stone-700 transition-colors"
+          >
+            {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Share2 className="w-3.5 h-3.5" />}
+            <span>{copied ? 'Copied Link' : 'Share Exhibition'}</span>
+          </button>
         </div>
 
         {/* Curatorial Closing Colophon */}
-        <div className="mt-20 pt-10 border-t border-stone-800/80 max-w-2xl mx-auto text-stone-400 text-xs leading-relaxed space-y-3">
+        <div className="mt-12 pt-10 border-t border-stone-800/80 max-w-2xl mx-auto text-stone-400 text-xs leading-relaxed space-y-3">
           <p className="font-serif italic text-stone-300">
             "Where the eternal light of the brass diya reflects upon the silicon mirror, human creation discovers its true source code."
           </p>
